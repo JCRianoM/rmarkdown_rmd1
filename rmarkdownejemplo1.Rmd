@@ -3,9 +3,15 @@ title: "Modulo2_rmarkdown_ejemplo1"
 author: "Julián Camilo Riaño Moreno"
 date: "16/3/2020"
 output:
-  html_document: default
+  word_document: default
   pdf_document: default
+  html_document: default
 ---
+
+install.packages('tinytex')
+library(tinytex)
+tinytex::tlmgr_update()
+tinytex::install_tinytex()
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -134,6 +140,32 @@ knitr::kable(head(cars),
 
 $$ Y = \beta_0 + \beta_1x $$
 
+##Insertando una imagen desde fuente externa a RStudio
+
+Acá vamos a insertar una imagen 
+
+![sunstar](sunstar.png)
 
 
+##Insertando un gif y un video
+
+Acá vamos a insertar un GIF
+
+![sunstar](sunstar/sunstar.gif)
+
+Acá vamos a insetar un video 
+
+![sunstarVideo](sunstar/sunstar.mp4)
+
+##Insertando texto con notas al pie de página
+
+Acá vamos a insertar una nota al pie de página [^1] para dedicar buenas actividades 
+[^longnote] Esto es importante para la mayor parte de los documentos que se requieran ^[
+Este requerimiento depende del trabajo que se esté realizando por ejemplo si 
+el caso es un documento de texto para una actividad de trabajo o para presentar
+un taller en algun estudio].
+
+[^1]: Esta es la forma sencilla pero ineficiente. 
+[^longnote]: Esta forma es importante pero es más larga, mejor usar en el texto únicamente el simbolo ^. 
+ 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

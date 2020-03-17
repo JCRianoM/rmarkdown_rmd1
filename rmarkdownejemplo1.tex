@@ -82,6 +82,15 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -107,8 +116,16 @@
 \begin{document}
 \maketitle
 
+install.packages(`tinytex') library(tinytex) tinytex::tlmgr\_update()
+tinytex::install\_tinytex()
+
+\#nivel uno
+
 \hypertarget{r-markdown}{%
 \subsection{R Markdown}\label{r-markdown}}
+
+\hypertarget{nivel-tres}{%
+\subsubsection{nivel tres}\label{nivel-tres}}
 
 This is an R Markdown document. Markdown is a simple formatting syntax
 for authoring HTML, PDF, and MS Word documents. For more details on
@@ -134,12 +151,253 @@ chunks within the document. You can embed an R code chunk like this:
 ##  Max.   :25.0   Max.   :120.00
 \end{verbatim}
 
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  The following text is provided
+\item
+  for easier cutting and pasting as you
+\item
+  work through the exercises in
+\item
+  Module 2 - lesson 2: R Markdown Syntax
+  ******************************************
+\end{itemize}
+
+\hypertarget{this-is-a-level-1-header}{%
+\section{This is a level 1 header}\label{this-is-a-level-1-header}}
+
+\hypertarget{this-is-a-level-3-header}{%
+\subsubsection{This is a level 3
+header}\label{this-is-a-level-3-header}}
+
+Here is a link to \href{https://www.google.com/}{GOOGLE}
+
+Here is a word in \textbf{bold} and another word in \textbf{bold}.
+
+Here is a word in \emph{italics} and another word in \emph{italics}.
+
+When we compile our document, we are using the \texttt{rmarkdown}
+package.
+
+Here are some example R commands:
+
+\begin{verbatim}
+2+2
+mean(c(1,2,3,4,5))
+\end{verbatim}
+
+Here is an example of a non-numbered list:
+
+\begin{itemize}
+\tightlist
+\item
+  Breakfast
+
+  \begin{itemize}
+  \tightlist
+  \item
+    food
+
+    \begin{itemize}
+    \tightlist
+    \item
+      eggs
+    \item
+      toast
+    \item
+      bacon
+    \end{itemize}
+  \item
+    drink
+
+    \begin{itemize}
+    \tightlist
+    \item
+      apple juice
+    \end{itemize}
+  \end{itemize}
+\item
+  Lunch
+
+  \begin{itemize}
+  \tightlist
+  \item
+    taco
+  \end{itemize}
+\item
+  Dinner
+
+  \begin{itemize}
+  \tightlist
+  \item
+    baked chicken
+  \item
+    broccoli
+  \item
+    rice
+  \end{itemize}
+\end{itemize}
+
+Here is an example of a numbered list:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Breakfast
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    food
+
+    \begin{enumerate}
+    \def\labelenumiii{\roman{enumiii}.}
+    \tightlist
+    \item
+      eggs
+    \item
+      toast
+    \item
+      bacon
+    \end{enumerate}
+  \item
+    drink
+
+    \begin{enumerate}
+    \def\labelenumiii{\roman{enumiii}.}
+    \tightlist
+    \item
+      apple juice
+    \end{enumerate}
+  \end{enumerate}
+\item
+  Lunch
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    taco
+  \end{enumerate}
+\item
+  Dinner
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    baked chicken
+  \item
+    broccoli
+  \item
+    rice
+  \end{enumerate}
+\end{enumerate}
+
+Here is an example of a blockquote:
+
+This is a block quote. This paragraph has two lines.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  This is a list inside a block quote.
+\item
+  Second item.
+\end{enumerate}
+
+Here is an example of a nested blockquote:
+
+This is a block quote. This paragraph has two lines.
+
+This text is nested
+
+Here is an example of code in a blockquote:
+
+2+2 mean(c(1,2,3,4,5))
+
 \hypertarget{including-plots}{%
 \subsection{Including Plots}\label{including-plots}}
 
 You can also embed plots, for example:
 
 \includegraphics{rmarkdownejemplo1_files/figure-latex/pressure-1.pdf}
+
+\includegraphics{rmarkdownejemplo1_files/figure-latex/presure-1.pdf}
+
+\hypertarget{insertando-tablas}{%
+\subsection{Insertando tablas}\label{insertando-tablas}}
+
+Usar la función kable de knitr
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{Esto corresponde a las 6 primeras filas de la base de datos
+cars}\tabularnewline
+\toprule
+speed & dist\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+speed & dist\tabularnewline
+\midrule
+\endhead
+4 & 2\tabularnewline
+4 & 10\tabularnewline
+7 & 4\tabularnewline
+7 & 22\tabularnewline
+8 & 16\tabularnewline
+9 & 10\tabularnewline
+\#\# Inser & tando una ecuación.\tabularnewline
+\# Ecuaci & ón de regresión lineal simple.\tabularnewline
+\bottomrule
+\end{longtable}
+
+\[ Y = \beta_0 + \beta_1x \]
+
+\#\#Insertando una imagen desde fuente externa a RStudio
+
+Acá vamos a insertar una imagen
+
+\begin{figure}
+\centering
+\includegraphics{sunstar.png}
+\caption{sunstar}
+\end{figure}
+
+\#\#Insertando un gif y un video
+
+Acá vamos a insertar un GIF
+
+\begin{figure}
+\centering
+\includegraphics{sunstar.gif}
+\caption{sunstar}
+\end{figure}
+
+Acá vamos a insetar un video
+
+\begin{figure}
+\centering
+\includegraphics{sunstar.mp4}
+\caption{sunstarVideo}
+\end{figure}
+
+\#\#Insertando texto con notas al pie de página
+
+Acá vamos a insertar una nota al pie de página \footnote{Esta es la
+  forma sencilla pero ineficiente.} para dedicar buenas actividades
+\footnote{Esta forma es importante pero es más larga, mejor usar en el
+  texto únicamente el simbolo \^{}.} Esto es importante para la mayor
+parte de los documentos que se requieran \footnote{Este requerimiento
+  depende del trabajo que se esté realizando por ejemplo si el caso es
+  un documento de texto para una actividad de trabajo o para presentar
+  un taller en algun estudio}.
 
 Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
 chunk to prevent printing of the R code that generated the plot.
