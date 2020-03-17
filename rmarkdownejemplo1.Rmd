@@ -3,9 +3,9 @@ title: "Modulo2_rmarkdown_ejemplo1"
 author: "Julián Camilo Riaño Moreno"
 date: "16/3/2020"
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 install.packages('tinytex')
@@ -16,7 +16,7 @@ tinytex::install_tinytex()
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-#nivel uno
+# nivel uno
 
 ## R Markdown
 
@@ -140,14 +140,14 @@ knitr::kable(head(cars),
 
 $$ Y = \beta_0 + \beta_1x $$
 
-##Insertando una imagen desde fuente externa a RStudio
+## Insertando una imagen desde fuente externa a RStudio
 
 Acá vamos a insertar una imagen 
 
 ![sunstar](sunstar.png)
 
 
-##Insertando un gif y un video
+## Insertando un gif y un video
 
 Acá vamos a insertar un GIF
 
@@ -157,7 +157,7 @@ Acá vamos a insetar un video
 
 ![sunstarVideo](sunstar/sunstar.mp4)
 
-##Insertando texto con notas al pie de página
+## Insertando texto con notas al pie de página
 
 Acá vamos a insertar una nota al pie de página [^1] para dedicar buenas actividades 
 [^longnote] Esto es importante para la mayor parte de los documentos que se requieran ^[
@@ -169,3 +169,17 @@ un taller en algun estudio].
 [^longnote]: Esta forma es importante pero es más larga, mejor usar en el texto únicamente el simbolo ^. 
  
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Insertando videos desde youtube
+```{r, include=FALSE}
+install.packages('vembedr', repo="http://cran.rstudio.com/") ##se insertó desde un mirror
+library(vembedr)
+library('htmltools')
+
+```
+
+```{r, echo=FALSE}
+embed_url("https://www.youtube.com/watch?v=uV4UpCq2azs")
+```
+
+
